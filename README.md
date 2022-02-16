@@ -1,2 +1,2 @@
 # TokenNip
-Discord token grabber for linux
+Discord token grabber for linux, nothing crazy, all imports should be built-in.
